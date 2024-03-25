@@ -15,7 +15,6 @@ public abstract class ContactDatabase extends RoomDatabase {
     public abstract ContactDao getContactDao();
 
     //Singleton Pattern
-
     private static ContactDatabase dbInstance;
 
     public static synchronized ContactDatabase getInstance(Context context) {
