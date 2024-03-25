@@ -1,9 +1,8 @@
-package com.winfred.contactsmanagerapp.entity;
+package com.winfred.contactsmanagerapp.Entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.util.TableInfo;
 
 @Entity(tableName = "contacts_table")
 public class Contacts {
