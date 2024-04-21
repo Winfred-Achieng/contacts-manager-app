@@ -1,4 +1,4 @@
-package com.winfred.contactsmanagerapp.Repository;
+package com.winfred.contactsmanagerapp;
 
 import android.app.Application;
 import android.os.Handler;
@@ -6,9 +6,9 @@ import android.os.Looper;
 
 import androidx.lifecycle.LiveData;
 
-import com.winfred.contactsmanagerapp.Dao.ContactDao;
-import com.winfred.contactsmanagerapp.Database.ContactDatabase;
-import com.winfred.contactsmanagerapp.Entity.Contacts;
+import com.winfred.contactsmanagerapp.ContactDao;
+import com.winfred.contactsmanagerapp.ContactDatabase;
+import com.winfred.contactsmanagerapp.Contacts;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

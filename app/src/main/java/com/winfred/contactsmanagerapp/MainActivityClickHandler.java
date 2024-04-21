@@ -1,10 +1,8 @@
-package com.winfred.contactsmanagerapp.ClickHandler;
+package com.winfred.contactsmanagerapp;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-
-import com.winfred.contactsmanagerapp.AddNewContactActivity;
 
 public class MainActivityClickHandler {
 

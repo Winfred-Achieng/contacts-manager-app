@@ -1,4 +1,4 @@
-package com.winfred.contactsmanagerapp.Entity;
+package com.winfred.contactsmanagerapp;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

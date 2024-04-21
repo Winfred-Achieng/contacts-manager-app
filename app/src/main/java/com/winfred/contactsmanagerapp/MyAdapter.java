@@ -1,4 +1,4 @@
-package com.winfred.contactsmanagerapp.Adapter;
+package com.winfred.contactsmanagerapp;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -7,8 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.winfred.contactsmanagerapp.Entity.Contacts;
-import com.winfred.contactsmanagerapp.R;
 import com.winfred.contactsmanagerapp.databinding.ContactListItemBinding;
 
 import java.util.ArrayList;
@@ -24,7 +22,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ContactViewHolder>
     @NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ContactListItemBinding binding= DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),R.layout.contact_list_item,parent,false);
+        ContactListItemBinding binding= DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.contact_list_item,parent,false);
 
         return new ContactViewHolder(binding);
     }

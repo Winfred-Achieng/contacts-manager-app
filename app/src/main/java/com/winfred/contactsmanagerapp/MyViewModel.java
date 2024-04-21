@@ -1,4 +1,4 @@
-package com.winfred.contactsmanagerapp.ViewModel;
+package com.winfred.contactsmanagerapp;
 
 import android.app.Application;
 
@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.winfred.contactsmanagerapp.Entity.Contacts;
-import com.winfred.contactsmanagerapp.Repository.Repository;
+import com.winfred.contactsmanagerapp.Contacts;
+import com.winfred.contactsmanagerapp.Repository;
 
 import java.util.List;
 

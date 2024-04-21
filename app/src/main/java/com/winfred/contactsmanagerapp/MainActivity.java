@@ -1,22 +1,17 @@
 package com.winfred.contactsmanagerapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.RoomSQLiteQuery;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
-import com.winfred.contactsmanagerapp.Adapter.MyAdapter;
-import com.winfred.contactsmanagerapp.ClickHandler.MainActivityClickHandler;
-import com.winfred.contactsmanagerapp.Database.ContactDatabase;
-import com.winfred.contactsmanagerapp.Entity.Contacts;
-import com.winfred.contactsmanagerapp.ViewModel.MyViewModel;
 import com.winfred.contactsmanagerapp.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -26,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Data Source
     private ContactDatabase contactDatabase;
-    private ArrayList<Contacts> contacts = new ArrayList<>();
+    private ArrayList<Contacts> contactsArrayList = new ArrayList<>();
 
     //Adapter
     private MyAdapter adapter;
@@ -50,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        adapter = new MyAdapter(contacts);
+        adapter = new MyAdapter(contactsArrayList);
 
         contactDatabase =ContactDatabase.getInstance(this);
 
@@ -63,11 +58,37 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllContacts().observe(this, new Observer<List<Contacts>>() {
             @Override
             public void onChanged(List<Contacts> contacts) {
+                contactsArrayList.clear();
+
                 for (Contacts c: contacts){
                     Log.v("TAGY", c.getName());
+
+                    contactsArrayList.add(c);
                 }
+
+                adapter.notifyDataSetChanged();
             }
         });
+
+        adapter=new MyAdapter(contactsArrayList);
+        recyclerView.setAdapter(adapter);
+
+        //swipe to delete
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+                Contacts c =contactsArrayList.get(viewHolder.getAdapterPosition());
+
+                viewModel.deleteContact(c);
+            }
+        }).attachToRecyclerView(recyclerView);
+
     }
 }
 
